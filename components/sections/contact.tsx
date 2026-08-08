@@ -70,13 +70,13 @@ export function Contact() {
 
               <div className="space-y-3 text-xs">
                 <a
-                  href="mailto:jhansi.jjs@gmail.com"
+                  href="mailto:suggujhansi@gmail.com"
                   className="flex items-center gap-3 text-zinc-300 hover:text-emerald-400 transition font-mono"
                 >
                   <div className="p-2 rounded-md bg-zinc-950 border border-zinc-800">
                     <Mail className="w-4 h-4 text-emerald-400" />
                   </div>
-                  jhansi.jjs@gmail.com
+                  suggujhansi@gmail.com
                 </a>
 
                 <a

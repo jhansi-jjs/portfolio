@@ -45,7 +45,7 @@ export const experienceTimeline: TimelineItem[] = [
   },
   {
     id: 'education-btech',
-    year: '2023 - 2027',
+    year: '2024 - 2028',
     title: 'B.Tech in Computer Science & Engineering (AI)',
     organization: 'University / Institute of Technology',
     description:

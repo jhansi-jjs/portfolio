@@ -19,7 +19,7 @@ export function Footer({ rateLimit, isMockData }: FooterProps) {
           © {new Date().getFullYear()} Jhansi. Built with Next.js 15, Tailwind v4 & GitHub GraphQL.
         </div>
 
-        {/* Middle: Real-Time Sync Status Pill (Correction #4) */}
+        {/* Middle: Real-Time Sync Status Pill */}
         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800">
           <span className={`w-2 h-2 rounded-full ${isHealthy ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`} />
           <span className="text-[11px] font-medium text-zinc-300">
@@ -43,7 +43,7 @@ export function Footer({ rateLimit, isMockData }: FooterProps) {
             <GithubIcon className="w-4 h-4" />
           </a>
           <a
-            href="mailto:jhansi.jjs@gmail.com"
+            href="mailto:suggujhansi@gmail.com"
             className="hover:text-emerald-400 transition"
             aria-label="Email"
           >

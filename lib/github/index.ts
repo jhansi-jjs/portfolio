@@ -11,12 +11,13 @@ import {
   ContributionCalendar,
   GitHubResult,
   FetchRepoOptions,
-  RateLimitInfo,
 } from '../types/github';
 
 const DEFAULT_USERNAME = process.env.GITHUB_USERNAME || 'jhansi-jjs';
 
-// Helper to map raw GraphQL node to typed Repository object
+// User directive: Exclude SMOFI and mczen-ai-platform from display
+const EXCLUDED_REPOS = ['smofi', 'mczen-ai-platform'];
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapGraphQLRepoNode(node: any): Repository {
   const languages =
@@ -62,7 +63,6 @@ function mapGraphQLRepoNode(node: any): Repository {
   };
 }
 
-// Fallback Mock Data in case GITHUB_TOKEN is unconfigured or rate limited
 const MOCK_PINNED_REPOS: PinnedRepo[] = [
   {
     id: 'mock-1',
@@ -145,10 +145,6 @@ const MOCK_PINNED_REPOS: PinnedRepo[] = [
   },
 ];
 
-/**
- * Fetch pinned repositories for the specified user.
- * Filters out external pins (where owner !== username) as per specs.
- */
 export async function getPinnedRepos(
   username: string = DEFAULT_USERNAME
 ): Promise<GitHubResult<PinnedRepo[]>> {
@@ -157,7 +153,7 @@ export async function getPinnedRepos(
 
   if (res.error || !res.data?.user?.pinnedItems?.nodes) {
     return {
-      data: MOCK_PINNED_REPOS,
+      data: MOCK_PINNED_REPOS.filter((r) => !EXCLUDED_REPOS.includes(r.name.toLowerCase())),
       error: res.error || 'Failed to fetch pinned repos. Using fallback data.',
       rateLimit: res.rateLimit,
       isMockData: true,
@@ -168,51 +164,9 @@ export async function getPinnedRepos(
   const rawNodes = res.data.user.pinnedItems.nodes;
   const repos = rawNodes
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    .filter((node: any) => node && node.owner?.login?.toLowerCase() === username.toLowerCase())
-    .map(mapGraphQLRepoNode);
-
-  return {
-    data: repos,
-    error: null,
-    rateLimit: res.rateLimit,
-    isMockData: false,
-  };
-}
-
-/**
- * Fetch all public repositories for the specified user.
- * Excludes forks and archived repos by default unless requested in options.
- */
-export async function getAllRepos(
-  username: string = DEFAULT_USERNAME,
-  options: FetchRepoOptions = {}
-): Promise<GitHubResult<Repository[]>> {
-  const { includeForks = false, includeArchived = false } = options;
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const res = await fetchGitHubGraphQL<any>(GET_USER_PUBLIC_REPOS, { username, first: 100 });
-
-  if (res.error || !res.data?.user?.repositories?.nodes) {
-    return {
-      data: MOCK_PINNED_REPOS,
-      error: res.error || 'Failed to fetch public repos. Using fallback data.',
-      rateLimit: res.rateLimit,
-      isMockData: true,
-    };
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const rawNodes = res.data.user.repositories.nodes;
-  const repos = rawNodes
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .filter((node: any) => {
-      if (!node) return false;
-      // Filter 1: Must be owned by user
-      if (node.owner?.login?.toLowerCase() !== username.toLowerCase()) return false;
-      // Filter 2: Fork filter
-      if (!includeForks && node.isFork) return false;
-      // Filter 3: Archived filter
-      if (!includeArchived && node.isArchived) return false;
+      if (!node || node.owner?.login?.toLowerCase() !== username.toLowerCase()) return false;
+      if (EXCLUDED_REPOS.includes(node.name?.toLowerCase())) return false;
       return true;
     })
     .map(mapGraphQLRepoNode);
@@ -225,9 +179,47 @@ export async function getAllRepos(
   };
 }
 
-/**
- * Fetch raw README markdown for a specific repository.
- */
+export async function getAllRepos(
+  username: string = DEFAULT_USERNAME,
+  options: FetchRepoOptions = {}
+): Promise<GitHubResult<Repository[]>> {
+  const { includeForks = false, includeArchived = false } = options;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const res = await fetchGitHubGraphQL<any>(GET_USER_PUBLIC_REPOS, { username, first: 100 });
+
+  if (res.error || !res.data?.user?.repositories?.nodes) {
+    return {
+      data: MOCK_PINNED_REPOS.filter((r) => !EXCLUDED_REPOS.includes(r.name.toLowerCase())),
+      error: res.error || 'Failed to fetch public repos. Using fallback data.',
+      rateLimit: res.rateLimit,
+      isMockData: true,
+    };
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rawNodes = res.data.user.repositories.nodes;
+  const repos = rawNodes
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .filter((node: any) => {
+      if (!node) return false;
+      if (node.owner?.login?.toLowerCase() !== username.toLowerCase()) return false;
+      if (!includeForks && node.isFork) return false;
+      if (!includeArchived && node.isArchived) return false;
+      // Exclude SMOFI and mczen-ai-platform
+      if (EXCLUDED_REPOS.includes(node.name?.toLowerCase())) return false;
+      return true;
+    })
+    .map(mapGraphQLRepoNode);
+
+  return {
+    data: repos,
+    error: null,
+    rateLimit: res.rateLimit,
+    isMockData: false,
+  };
+}
+
 export async function getRepoReadme(
   owner: string,
   repo: string
@@ -252,9 +244,6 @@ export async function getRepoReadme(
   };
 }
 
-/**
- * Fetch contribution calendar data.
- */
 export async function getContributionCalendar(
   username: string = DEFAULT_USERNAME
 ): Promise<GitHubResult<ContributionCalendar>> {

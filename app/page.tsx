@@ -1,8 +1,11 @@
 import { getPinnedRepos, getAllRepos } from '@/lib/github';
 import { Hero } from '@/components/sections/hero';
 import { About } from '@/components/sections/about';
+import { Experience } from '@/components/sections/experience';
 import { Projects } from '@/components/sections/projects';
+import { Certificates } from '@/components/sections/certificates';
 import { Skills } from '@/components/sections/skills';
+import { Achievements } from '@/components/sections/achievements';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/shared/footer';
 
@@ -23,6 +26,7 @@ export default async function HomePage() {
       <div className="space-y-12">
         <Hero />
         <About />
+        <Experience />
         <Projects
           pinnedRepos={pinnedRes.data || []}
           allRepos={allReposRes.data || []}
@@ -30,7 +34,9 @@ export default async function HomePage() {
           error={error}
           isMockData={isMockData}
         />
+        <Certificates />
         <Skills />
+        <Achievements />
         <Contact />
       </div>
       <Footer rateLimit={rateLimit} isMockData={isMockData} />
