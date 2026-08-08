@@ -15,17 +15,45 @@ export const experienceData: ExperienceEntry[] = [
   {
     id: 'exp-vsr',
     role: 'Lead Researcher — Speaker-Adaptive Visual Speech Recognition',
-    organization: 'Computer Vision & Deep Learning Lab',
-    period: '2025 - Present',
+    organization: 'Speaker-Adaptive Visual Speech Recognition Project',
+    period: '2025 - Present (Ongoing)',
     type: 'Research',
     description:
       'Designing neural architectures that translate silent video of dysarthric speech movements into decoded text.',
     bullets: [
       'Implemented spatiotemporal 3D-CNN and Transformer feature extractors in PyTorch.',
       'Developed data-efficient fine-tuning pipelines adapting to individual dysarthric articulation patterns.',
-      'Targeting upcoming conference publication for dysarthric lip-reading benchmarks.',
+      'Targeting upcoming IEEE/Springer conference publication for dysarthric lip-reading benchmarks.',
     ],
     skills: ['PyTorch', 'Computer Vision', 'Deep Learning', 'Python', 'OpenCV'],
+  },
+  {
+    id: 'exp-road-accident',
+    role: 'ML Researcher — Road Accident Severity Classification',
+    organization: 'Road Accident ML Analytics Project',
+    period: '2025 - Present (Ongoing)',
+    type: 'Research',
+    description:
+      'Developed predictive analytics and classification models for road accident severity prediction.',
+    bullets: [
+      'Engineered machine learning pipelines for multi-class accident severity evaluation.',
+      'Conference paper submission currently ongoing.',
+    ],
+    skills: ['Python', 'Scikit-Learn', 'Machine Learning', 'Data Science'],
+  },
+  {
+    id: 'exp-mnist-compression',
+    role: 'ML Efficiency Researcher — Deep Neural Network Compression',
+    organization: 'Neural Model Compression Engine',
+    period: '2024 - Present (Ongoing)',
+    type: 'Research',
+    description:
+      'Benchmarking neural network compression techniques including 8-bit quantization and structured weight pruning.',
+    bullets: [
+      'Compressing deep learning model weights with minimal loss in prediction accuracy.',
+      'Exposing ONNX Runtime export functions for edge device deployment.',
+    ],
+    skills: ['PyTorch', 'Quantization', 'ONNX', 'Jupyter Notebook'],
   },
   {
     id: 'exp-nitrostack',
@@ -54,19 +82,5 @@ export const experienceData: ExperienceEntry[] = [
       'Built scikit-learn anomaly detection pipelines for transaction pattern analysis.',
     ],
     skills: ['Next.js 15', 'TypeScript', 'Python', 'Scikit-Learn', 'Tailwind CSS'],
-  },
-  {
-    id: 'exp-mnist-compression',
-    role: 'Open-Source Developer — Deep Learning Compression',
-    organization: 'ML Model Efficiency Project',
-    period: '2024 - 2025',
-    type: 'Open Source',
-    description:
-      'Benchmarked neural network compression techniques including 8-bit quantization and structured weight pruning.',
-    bullets: [
-      'Compressed deep learning model weights by over 70% while maintaining >98% accuracy on benchmark test sets.',
-      'Exposed ONNX Runtime export functions for edge device deployment.',
-    ],
-    skills: ['PyTorch', 'Quantization', 'ONNX', 'Jupyter Notebook'],
   },
 ];

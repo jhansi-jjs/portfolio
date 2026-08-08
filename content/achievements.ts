@@ -12,13 +12,33 @@ export interface Achievement {
 export const achievementsData: Achievement[] = [
   {
     id: 'ach-vsr-paper',
-    title: 'Speaker-Adaptive Visual Speech Recognition (VSR) Publication',
+    title: 'Speaker-Adaptive Visual Speech Recognition (VSR) Research',
     category: 'Research',
-    date: '2025 - 2026',
-    status: 'In Progress / Target Submission',
+    date: '2025 - Present',
+    status: 'Conference Paper (Ongoing)',
     description:
-      'Research paper on dysarthric lip-reading adaptation using 3D-CNN Transformer architectures.',
-    metrics: 'Targeting peer-reviewed IEEE / Springer conference',
+      'Designing deep 3D-CNN and Transformer neural networks for dysarthric lip-reading adaptation.',
+    metrics: 'IEEE / Springer Conference Target',
+  },
+  {
+    id: 'ach-road-accident',
+    title: 'Road Accident Severity & Predictive ML Analytics',
+    category: 'Research',
+    date: '2025 - Present',
+    status: 'Conference Paper (Ongoing)',
+    description:
+      'Predictive machine learning analytics and severity classification model for road safety optimization.',
+    metrics: 'Conference Paper In Progress',
+  },
+  {
+    id: 'ach-model-compression',
+    title: 'MNIST Neural Network Model Compression Benchmark',
+    category: 'Research',
+    date: '2024 - Present',
+    status: 'Ongoing',
+    description:
+      'Implementing 8-bit quantization, weight pruning, and model efficiency optimizations in PyTorch.',
+    metrics: '70%+ compression benchmark',
   },
   {
     id: 'ach-nitrostack-hackathon',
@@ -27,25 +47,6 @@ export const achievementsData: Achievement[] = [
     date: '2025',
     status: 'Completed',
     description:
-      'Developed Model Context Protocol (MCP) integrations connecting AI agents with localized execution environments.',
-  },
-  {
-    id: 'ach-model-compression',
-    title: 'Neural Network Model Compression Benchmark',
-    category: 'Research',
-    date: '2025',
-    status: 'Achieved',
-    description:
-      'Achieved 70%+ model size reduction via PyTorch 8-bit quantization with minimal loss in prediction accuracy.',
-    metrics: '70% compression ratio',
-  },
-  {
-    id: 'ach-academic-excellence',
-    title: 'Top Performer in B.Tech CSE (AI)',
-    category: 'Academic',
-    date: '2024 - Present',
-    status: 'Ongoing',
-    description:
-      'Maintained consistent high academic standing in core Artificial Intelligence & Algorithms coursework.',
+      'Built Model Context Protocol (MCP) integrations connecting AI agents with localized execution tools.',
   },
 ];

@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { resumeData } from '@/content/resume';
-import { aboutNarrative, experienceTimeline } from '@/content/about';
+import { aboutNarrative } from '@/content/about';
 import { experienceData } from '@/content/experience';
 import { skillsData } from '@/content/skills';
 import { achievementsData } from '@/content/achievements';
 
-// Simple in-memory session rate limiter (max 15 queries per session / IP)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const MAX_QUERIES_PER_WINDOW = 15;
-const WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const WINDOW_MS = 60 * 60 * 1000;
 
 export async function POST(request: NextRequest) {
   try {
@@ -40,38 +39,20 @@ export async function POST(request: NextRequest) {
 
     const queryLower = message.toLowerCase();
 
-    // Construct grounded context string from portfolio data
-    const contextPrompt = `
-You are Jhansi's AI Portfolio Assistant. Answer strictly based on the following profile details:
-Name: ${resumeData.name}
-Role: ${resumeData.headline}
-Education: B.Tech CSE (Artificial Intelligence), 2024-2028
-Email: ${resumeData.email}
-GitHub: ${resumeData.github}
-
-Core Research:
-- ${aboutNarrative.bioParagraph1}
-- ${aboutNarrative.bioParagraph2}
-
-Key Experience:
-${experienceData.map((e) => `- ${e.role} at ${e.organization}: ${e.description}`).join('\n')}
-
-Skills:
-${skillsData.map((s) => `${s.category}: ${s.skills.map((k) => k.name).join(', ')}`).join('\n')}
-
-Achievements & Publications:
-${achievementsData.map((a) => `- ${a.title} (${a.date}): ${a.description}`).join('\n')}
-`;
-
-    // Rule-based high-accuracy response fallback engine
     let reply = '';
 
     if (queryLower.includes('vsr') || queryLower.includes('lip') || queryLower.includes('speech')) {
       reply =
-        'Jhansi lead-researches Speaker-Adaptive Visual Speech Recognition (VSR), using 3D-CNN and Transformer architectures in PyTorch to decode silent lip movements into text for dysarthric speech patterns.';
-    } else if (queryLower.includes('project') || queryLower.includes('gig') || queryLower.includes('mnist')) {
+        'Jhansi lead-researches Speaker-Adaptive Visual Speech Recognition (VSR), using 3D-CNN and Transformer neural networks in PyTorch to decode silent lip movements into text for dysarthric speech patterns (Conference paper ongoing).';
+    } else if (queryLower.includes('accident') || queryLower.includes('road')) {
       reply =
-        'Jhansi has built high-impact projects including Gig Protector Pro (AI fraud detection platform), MNIST Neural Model Compression (70%+ weight pruning & 8-bit quantization), and VSR Lip-Reading engines.';
+        'Jhansi has developed the Road Accident Severity Classification & Analytics project, with a conference paper submission currently ongoing.';
+    } else if (queryLower.includes('mnist') || queryLower.includes('compression') || queryLower.includes('quantization')) {
+      reply =
+        'Jhansi is actively working on the MNIST Neural Network Compression benchmark (Ongoing), applying 8-bit quantization and weight pruning in PyTorch.';
+    } else if (queryLower.includes('project') || queryLower.includes('gig')) {
+      reply =
+        'Jhansi’s primary research and development projects include Visual Speech Recognition (VSR), Road Accident Severity ML (Conference paper ongoing), Gig Protector Pro, and MNIST Model Compression (Ongoing).';
     } else if (queryLower.includes('skill') || queryLower.includes('tech') || queryLower.includes('stack')) {
       reply =
         'Jhansi’s core stack includes Python, PyTorch, OpenCV, Scikit-Learn, Next.js 15, TypeScript, Tailwind CSS v4, Docker, and Model Context Protocol (MCP).';
@@ -81,7 +62,7 @@ ${achievementsData.map((a) => `- ${a.title} (${a.date}): ${a.description}`).join
     } else if (queryLower.includes('contact') || queryLower.includes('email') || queryLower.includes('reach')) {
       reply = `You can reach Jhansi directly via email at suggujhansi@gmail.com or on GitHub at github.com/jhansi-jjs.`;
     } else {
-      reply = `Jhansi is a 3rd-year CSE-AI student specializing in Visual Speech Recognition (VSR), PyTorch deep learning, neural model compression, and Next.js 15 full-stack engineering. Feel free to ask about her VSR research, Gig Protector Pro project, or tech stack!`;
+      reply = `Jhansi is a 3rd-year CSE-AI student (2024–2028) specializing in Visual Speech Recognition (VSR, conference paper ongoing), Road Accident ML Analytics (conference paper ongoing), PyTorch deep learning, neural model compression (ongoing), and Next.js 15 full-stack engineering.`;
     }
 
     return NextResponse.json({
