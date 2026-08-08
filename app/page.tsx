@@ -1,45 +1,27 @@
-import { getPinnedRepos, getAllRepos } from '@/lib/github';
-import { Hero } from '@/components/sections/hero';
-import { About } from '@/components/sections/about';
-import { Experience } from '@/components/sections/experience';
-import { Projects } from '@/components/sections/projects';
-import { Certificates } from '@/components/sections/certificates';
-import { Skills } from '@/components/sections/skills';
-import { Achievements } from '@/components/sections/achievements';
-import { Contact } from '@/components/sections/contact';
-import { Footer } from '@/components/shared/footer';
+import { getPinnedRepos, getAllRepos, getContributionCalendar } from '@/lib/github';
+import { PortfolioClientWrapper } from '@/components/portfolio-client-wrapper';
 
 export const revalidate = 3600; // 1-hour ISR revalidation
 
 export default async function HomePage() {
-  const [pinnedRes, allReposRes] = await Promise.all([
+  const [pinnedRes, allReposRes, contributionRes] = await Promise.all([
     getPinnedRepos(),
     getAllRepos(),
+    getContributionCalendar(),
   ]);
 
-  const rateLimit = pinnedRes.rateLimit || allReposRes.rateLimit || null;
-  const isMockData = Boolean(pinnedRes.isMockData || allReposRes.isMockData);
+  const rateLimit = pinnedRes.rateLimit || allReposRes.rateLimit || contributionRes.rateLimit || null;
+  const isMockData = Boolean(pinnedRes.isMockData || allReposRes.isMockData || contributionRes.isMockData);
   const error = pinnedRes.error || allReposRes.error || null;
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col justify-between">
-      <div className="space-y-12">
-        <Hero />
-        <About />
-        <Experience />
-        <Projects
-          pinnedRepos={pinnedRes.data || []}
-          allRepos={allReposRes.data || []}
-          rateLimit={rateLimit}
-          error={error}
-          isMockData={isMockData}
-        />
-        <Certificates />
-        <Skills />
-        <Achievements />
-        <Contact />
-      </div>
-      <Footer rateLimit={rateLimit} isMockData={isMockData} />
-    </main>
+    <PortfolioClientWrapper
+      pinnedRepos={pinnedRes.data || []}
+      allRepos={allReposRes.data || []}
+      calendar={contributionRes.data || null}
+      rateLimit={rateLimit}
+      isMockData={isMockData}
+      error={error}
+    />
   );
 }

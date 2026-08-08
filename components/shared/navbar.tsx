@@ -3,17 +3,20 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from './theme-toggle';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Command } from 'lucide-react';
 import { GithubIcon } from './icons';
 
-export function Navbar() {
+interface NavbarProps {
+  onOpenCommandPalette?: () => void;
+}
+
+export function Navbar({ onOpenCommandPalette }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const navLinks = [
     { name: 'About', href: '#about' },
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Certificates', href: '#certificates' },
     { name: 'Skills', href: '#skills' },
     { name: 'Achievements', href: '#achievements' },
     { name: 'Contact', href: '#contact' },
@@ -45,6 +48,17 @@ export function Navbar() {
 
         {/* Actions */}
         <div className="hidden lg:flex items-center gap-3">
+          {onOpenCommandPalette && (
+            <button
+              onClick={onOpenCommandPalette}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono text-zinc-400 bg-zinc-900 border border-zinc-800 hover:text-zinc-100 hover:border-zinc-700 rounded-md transition"
+              title="Command Palette (Cmd/Ctrl + K)"
+            >
+              <Command className="w-3.5 h-3.5 text-emerald-400" />
+              <span>⌘K</span>
+            </button>
+          )}
+
           <ThemeToggle />
           <a
             href="https://github.com/jhansi-jjs"
@@ -59,6 +73,15 @@ export function Navbar() {
 
         {/* Mobile menu trigger */}
         <div className="flex lg:hidden items-center gap-2">
+          {onOpenCommandPalette && (
+            <button
+              onClick={onOpenCommandPalette}
+              className="p-2 text-zinc-400 hover:text-zinc-100 rounded-md border border-zinc-800"
+              aria-label="Open Command Palette"
+            >
+              <Command className="w-4 h-4 text-emerald-400" />
+            </button>
+          )}
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
