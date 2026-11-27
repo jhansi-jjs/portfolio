@@ -5,12 +5,11 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, email, message, hp_website } = body;
 
-    // Correction #3: Honeypot check for spam bots
+    // Honeypot check for spam bots
     if (hp_website && hp_website.trim() !== '') {
-      // Silently accept bot submission without sending email
       return NextResponse.json({
         success: true,
-        message: 'Message delivered successfully.',
+        message: 'Message received.',
       });
     }
 
@@ -30,9 +29,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!message || typeof message !== 'string' || message.trim().length < 10) {
+    if (!message || typeof message !== 'string' || message.trim().length < 5) {
       return NextResponse.json(
-        { error: 'Message must be at least 10 characters long.' },
+        { error: 'Message must be at least 5 characters long.' },
         { status: 400 }
       );
     }
@@ -40,7 +39,6 @@ export async function POST(request: NextRequest) {
     const resendApiKey = process.env.RESEND_API_KEY;
 
     if (resendApiKey) {
-      // Optional Resend email sending
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -49,7 +47,7 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           from: 'Portfolio Contact <onboarding@resend.dev>',
-          to: ['jhansi.jjs@gmail.com'],
+          to: ['suggujhansi@gmail.com'],
           subject: `Portfolio Message from ${name.trim()}`,
           text: `Name: ${name.trim()}\nEmail: ${email.trim()}\n\nMessage:\n${message.trim()}`,
         }),
@@ -61,6 +59,7 @@ export async function POST(request: NextRequest) {
       }
     } else {
       console.log('=== CONTACT FORM SUBMISSION ===');
+      console.log(`To: suggujhansi@gmail.com`);
       console.log(`From: ${name.trim()} <${email.trim()}>`);
       console.log(`Message:\n${message.trim()}`);
       console.log('===============================');
@@ -68,7 +67,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: 'Thank you for your message! I will get back to you shortly.',
+      message: 'Opening your email client to deliver to suggujhansi@gmail.com...',
     });
   } catch (err: unknown) {
     const errorMsg = err instanceof Error ? err.message : 'Server error processing message';

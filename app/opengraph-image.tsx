@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Jhansi — AI/ML Engineer & Full-Stack Developer';
+export const alt = 'Jhansi Suggula — AI/ML Engineer & Full-Stack Developer';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -45,7 +45,7 @@ export default async function Image() {
               backgroundColor: '#34d399',
             }}
           />
-          jhansi.dev — AI/ML & Full-Stack Portfolio
+          jhansi.dev — AI/ML Researcher & Full-Stack Developer
         </div>
 
         {/* Hero Title & Subtitle */}
@@ -55,14 +55,23 @@ export default async function Image() {
               fontSize: '56px',
               fontWeight: 800,
               color: '#f4f4f5',
-              lineHeight: 1.1,
+              lineHeight: 1.15,
               letterSpacing: '-0.02em',
             }}
           >
-            Speaker-Adaptive Visual Speech Recognition & Neural AI Systems
+            Jhansi Suggula
           </div>
-          <div style={{ fontSize: '24px', color: '#a1a1aa', fontWeight: 400 }}>
-            3rd-Year CSE (Artificial Intelligence) Student | PyTorch, Next.js 15, Model Compression
+          <div
+            style={{
+              fontSize: '32px',
+              fontWeight: 600,
+              color: '#34d399',
+            }}
+          >
+            Deep Learning, Healthcare Computer Vision & Full-Stack Engineering
+          </div>
+          <div style={{ fontSize: '22px', color: '#a1a1aa', fontWeight: 400 }}>
+            3rd-Year B.Tech Student in Computer Science & Engineering (AI) | Batch 2024–2028
           </div>
         </div>
 
@@ -79,7 +88,7 @@ export default async function Image() {
             color: '#71717a',
           }}
         >
-          <div>github.com/jhansi-jjs</div>
+          <div>github.com/jhansi-jjs • suggujhansi@gmail.com</div>
           <div style={{ display: 'flex', gap: '12px' }}>
             <span
               style={{
@@ -89,7 +98,7 @@ export default async function Image() {
                 color: '#34d399',
               }}
             >
-              #PyTorch
+              #HealthcareAI
             </span>
             <span
               style={{
@@ -99,7 +108,17 @@ export default async function Image() {
                 color: '#34d399',
               }}
             >
-              #DeepLearning
+              #VisualSpeechRecognition
+            </span>
+            <span
+              style={{
+                backgroundColor: '#18181b',
+                padding: '4px 12px',
+                borderRadius: '6px',
+                color: '#34d399',
+              }}
+            >
+              #ModelCompression
             </span>
             <span
               style={{

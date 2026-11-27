@@ -1,9 +1,9 @@
 import { ResumeData } from '../lib/types';
 
 export const resumeData: ResumeData = {
-  name: 'Jhansi',
-  headline: '3rd-year CSE-AI student | AI/ML & Full Stack Developer',
-  bio: 'Building speaker-adaptive Visual Speech Recognition (VSR), ML compression pipelines, and scalable web applications.',
+  name: 'Jhansi Suggula',
+  headline: '3rd-Year B.Tech CSE (AI) Student | AI/ML Researcher & Full-Stack Developer',
+  bio: 'Building accessible, high-performance intelligent systems across Computer Vision & Healthcare AI, Visual Speech Recognition (VSR), Neural Network Model Compression, and Next.js full-stack architectures.',
   location: 'India',
   email: 'suggujhansi@gmail.com',
   github: 'https://github.com/jhansi-jjs',

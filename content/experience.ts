@@ -13,6 +13,36 @@ export interface ExperienceEntry {
 
 export const experienceData: ExperienceEntry[] = [
   {
+    id: 'exp-fundus',
+    role: 'Deep Learning Researcher — Retinal Optic Disc & Cup Segmentation',
+    organization: 'Deep Learning for Healthcare Challenge (Track 2B)',
+    period: '2026',
+    type: 'Research',
+    description:
+      'Engineered cross-domain generalization deep learning models for segmenting retinal optic discs and optic cups across varying ophthalmic cameras and imaging sources.',
+    bullets: [
+      'Implemented domain-invariant feature extractors reducing source-to-target domain gap in medical fundus images.',
+      'Achieved robust Dice coefficient scores across heterogeneous clinical imaging datasets.',
+    ],
+    skills: ['PyTorch', 'Medical Imaging', 'Domain Adaptation', 'Computer Vision', 'Deep Learning'],
+    link: 'https://github.com/jhansi-jjs/fundus-domain-gen',
+  },
+  {
+    id: 'exp-amazon-ml',
+    role: 'Machine Learning Engineer — Business Entity Resolution',
+    organization: 'Amazon ML Challenge 2026',
+    period: '2026',
+    type: 'Research',
+    description:
+      'Engineered an enterprise-grade record linkage and business entity deduplication pipeline processing millions of commercial entity records.',
+    bullets: [
+      'Constructed indexing and blocking algorithms to drastically reduce pair-comparison search spaces.',
+      'Designed text similarity ensembles (Levenshtein, Jaro-Winkler, TF-IDF cosine) feeding supervised classification models.',
+    ],
+    skills: ['Python', 'Scikit-Learn', 'Pandas', 'Entity Resolution', 'NLP'],
+    link: 'https://github.com/jhansi-jjs/business-entity-resolution',
+  },
+  {
     id: 'exp-vsr',
     role: 'Lead Researcher — Speaker-Adaptive Visual Speech Recognition',
     organization: 'Speaker-Adaptive Visual Speech Recognition Project',
@@ -26,6 +56,7 @@ export const experienceData: ExperienceEntry[] = [
       'Targeting upcoming IEEE/Springer conference publication for dysarthric lip-reading benchmarks.',
     ],
     skills: ['PyTorch', 'Computer Vision', 'Deep Learning', 'Python', 'OpenCV'],
+    link: 'https://github.com/jhansi-jjs/vsr-dysarthric-project',
   },
   {
     id: 'exp-road-accident',
@@ -40,34 +71,7 @@ export const experienceData: ExperienceEntry[] = [
       'Conference paper submission currently ongoing.',
     ],
     skills: ['Python', 'Scikit-Learn', 'Machine Learning', 'Data Science'],
-  },
-  {
-    id: 'exp-mnist-compression',
-    role: 'ML Efficiency Researcher — Deep Neural Network Compression',
-    organization: 'Neural Model Compression Engine',
-    period: '2024 - Present (Ongoing)',
-    type: 'Research',
-    description:
-      'Benchmarking neural network compression techniques including 8-bit quantization and structured weight pruning.',
-    bullets: [
-      'Compressing deep learning model weights with minimal loss in prediction accuracy.',
-      'Exposing ONNX Runtime export functions for edge device deployment.',
-    ],
-    skills: ['PyTorch', 'Quantization', 'ONNX', 'Jupyter Notebook'],
-  },
-  {
-    id: 'exp-nitrostack',
-    role: 'Hackathon Contributor — NitroStack MCP Ecosystem',
-    organization: 'NitroStack MCP Hackathon',
-    period: '2025',
-    type: 'Hackathon',
-    description:
-      'Built Model Context Protocol (MCP) integrations connecting custom AI agents with specialized developer tools.',
-    bullets: [
-      'Created low-latency MCP server endpoints in TypeScript for autonomous coding tools.',
-      'Designed structured schema handlers for real-time state synchronization.',
-    ],
-    skills: ['TypeScript', 'Model Context Protocol (MCP)', 'Node.js', 'JSON-RPC'],
+    link: 'https://github.com/jhansi-jjs/road-accident-ml-project',
   },
   {
     id: 'exp-gig-protector',
@@ -82,5 +86,36 @@ export const experienceData: ExperienceEntry[] = [
       'Built scikit-learn anomaly detection pipelines for transaction pattern analysis.',
     ],
     skills: ['Next.js 15', 'TypeScript', 'Python', 'Scikit-Learn', 'Tailwind CSS'],
+    link: 'https://github.com/jhansi-jjs/gig-protector-pro',
+  },
+  {
+    id: 'exp-mnist-compression',
+    role: 'ML Efficiency Researcher — Deep Neural Network Compression',
+    organization: 'Neural Model Compression Engine',
+    period: '2024 - Present (Ongoing)',
+    type: 'Research',
+    description:
+      'Benchmarking neural network compression techniques including 8-bit quantization and structured weight pruning.',
+    bullets: [
+      'Compressing deep learning model weights with minimal loss in prediction accuracy.',
+      'Exposing ONNX Runtime export functions for edge device deployment.',
+    ],
+    skills: ['PyTorch', 'Quantization', 'ONNX', 'Jupyter Notebook'],
+    link: 'https://github.com/jhansi-jjs/mnist-model-compression',
+  },
+  {
+    id: 'exp-viyan',
+    role: 'AI Systems Architect — VIYAN Space Traffic Management',
+    organization: 'Autonomous Aerospace Agent Suite',
+    period: '2025',
+    type: 'Project',
+    description:
+      'Constructed an AI-powered Space Traffic Management server implementing the Model Context Protocol (MCP) for satellite conjunction analysis.',
+    bullets: [
+      'Exposed real-time orbital trajectory telemetry via standardized MCP tools.',
+      'Designed collision risk assessment routines for low-Earth orbit satellites.',
+    ],
+    skills: ['Python', 'Model Context Protocol (MCP)', 'Astrodynamics', 'AI'],
+    link: 'https://github.com/jhansi-jjs/viyan',
   },
 ];
