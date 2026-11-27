@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Jhansi Suggula — AI/ML Engineer & Full-Stack Developer';
+export const alt = 'Jhansi Lakshmi — AI/ML Engineer & Full-Stack Developer';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -59,7 +59,7 @@ export default async function Image() {
               letterSpacing: '-0.02em',
             }}
           >
-            Jhansi Suggula
+            Jhansi Lakshmi
           </div>
           <div
             style={{

@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         'Jhansi has built 14 substantive projects across Healthcare AI (Fundus Retinal Segmentation), Speech AI (Dysarthric VSR), Enterprise ML (Amazon ML Entity Resolution), Safety Analytics (Road Accident Severity), AI Security (Gig Protector Pro), and Model Compression.';
     } else if (queryLower.includes('who') || queryLower.includes('about') || queryLower.includes('study') || queryLower.includes('education') || queryLower.includes('batch')) {
       reply =
-        'Jhansi Suggula is a 3rd-year B.Tech student in Computer Science & Engineering (Artificial Intelligence) [Batch 2024–2028]. She specializes in Deep Learning, Computer Vision, Speech Systems, and Full-Stack Engineering.';
+        'Jhansi Lakshmi is a 3rd-year B.Tech student in Computer Science & Engineering (Artificial Intelligence) [Batch 2024–2028]. She specializes in Deep Learning, Computer Vision, Speech Systems, and Full-Stack Engineering.';
     } else if (queryLower.includes('skill') || queryLower.includes('tech') || queryLower.includes('stack')) {
       reply =
         'Jhansi’s primary stack includes Python, PyTorch, OpenCV, Scikit-Learn, Next.js 15, TypeScript, Tailwind CSS v4, FastAPI, Docker, and Model Context Protocol (MCP).';
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
         'You can reach Jhansi directly at suggujhansi@gmail.com or via her GitHub at github.com/jhansi-jjs.';
     } else {
       reply =
-        'Jhansi Suggula is a 3rd-year CSE-AI student (2024–2028) researching Healthcare AI (retinal segmentation), Visual Speech Recognition (dysarthric lip-reading), Neural Model Compression, and Full-Stack Web Systems. Feel free to ask about any of her 14 projects!';
+        'Jhansi Lakshmi is a 3rd-year CSE-AI student (2024–2028) researching Healthcare AI (retinal segmentation), Visual Speech Recognition (dysarthric lip-reading), Neural Model Compression, and Full-Stack Web Systems. Feel free to ask about any of her 14 projects!';
     }
 
     return NextResponse.json({

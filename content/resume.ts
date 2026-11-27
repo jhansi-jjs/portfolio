@@ -1,7 +1,7 @@
 import { ResumeData } from '../lib/types';
 
 export const resumeData: ResumeData = {
-  name: 'Jhansi Suggula',
+  name: 'Jhansi Lakshmi',
   headline: '3rd-Year B.Tech CSE (AI) Student | AI/ML Researcher & Full-Stack Developer',
   bio: 'Building accessible, high-performance intelligent systems across Computer Vision & Healthcare AI, Visual Speech Recognition (VSR), Neural Network Model Compression, and Next.js full-stack architectures.',
   location: 'India',

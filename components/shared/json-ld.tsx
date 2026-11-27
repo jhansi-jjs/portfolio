@@ -4,7 +4,7 @@ export function JsonLd() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Jhansi',
+    name: 'Jhansi Lakshmi',
     jobTitle: 'AI/ML Engineer & Full-Stack Developer',
     description:
       '3rd-year CSE-AI student building speaker-adaptive Visual Speech Recognition (VSR) and neural model compression pipelines.',

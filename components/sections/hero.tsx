@@ -34,7 +34,7 @@ export function Hero() {
         {/* Identity Badge */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800 text-xs text-zinc-300 font-mono shadow-inner">
           <span className="w-2 h-2 rounded-full bg-emerald-400" />
-          <span>Jhansi Suggula • 3rd-Year B.Tech CSE (AI) • 2024–2028</span>
+          <span>Jhansi Lakshmi • 3rd-Year B.Tech CSE (AI) • 2024–2028</span>
         </div>
 
         {/* Headline */}

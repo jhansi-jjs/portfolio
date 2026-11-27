@@ -8,12 +8,12 @@ export interface TimelineItem {
 }
 
 export const aboutNarrative = {
-  name: 'Jhansi Suggula',
+  name: 'Jhansi Lakshmi',
   role: 'AI/ML Researcher & Full-Stack Software Engineer',
   education: '3rd-Year B.Tech in Computer Science & Engineering (Artificial Intelligence), 2024 – 2028 Batch',
   headline: 'Building neural systems that see, adapt, and empower.',
   bioParagraph1:
-    "I am Jhansi Suggula, a 3rd-year undergraduate in Computer Science & Engineering with an Artificial Intelligence specialization (Batch 2024–2028). My work centers on pushing the boundaries of deep learning and computer vision to solve high-stakes challenges — from speaker-adaptive lip-reading for individuals with dysarthric speech to cross-domain retinal image segmentation for ophthalmic healthcare.",
+    "I am Jhansi Lakshmi, a 3rd-year undergraduate in Computer Science & Engineering with an Artificial Intelligence specialization (Batch 2024–2028). My work centers on pushing the boundaries of deep learning and computer vision to solve high-stakes challenges — from speaker-adaptive lip-reading for individuals with dysarthric speech to cross-domain retinal image segmentation for ophthalmic healthcare.",
   bioParagraph2:
     "I'm deeply interested in the full lifecycle of intelligent systems: designing novel neural architectures (PyTorch, 3D-CNNs, Vision Transformers), compressing and quantizing models (8-bit quantization, structured weight pruning) for edge deployment, and constructing scalable, modern full-stack web applications using Next.js 15, TypeScript, and FastAPI.",
   interests: [
